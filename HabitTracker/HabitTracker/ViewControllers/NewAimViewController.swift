@@ -18,7 +18,7 @@ class NewAimViewController: UIViewController {
     
     // MARK: Private functions
     private func setupUI() {
- 
+        view.backgroundColor = .green
     }
 
 }
