@@ -9,7 +9,10 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    // MARK: Private properites
+    // MARK: Public properites
+    var habits: [Habit] = [Habit(name: "Study", minimum: 3, howManyDone: 2)]
+    
+    // MARK: UI Components
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -30,6 +33,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupTableView()
     }
     
     // MARK: Private functions
@@ -60,5 +64,26 @@ class MainViewController: UIViewController {
             ]
         )
     }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.rowHeight = 80
+        tableView.register(HabitCellTableViewCell.self, forCellReuseIdentifier: "HabitCell")
+    }
 
+}
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCellTableViewCell
+        let habit = habits[indexPath.row]
+        cell.setCell(habit: habit)
+        return cell
+    }
 }

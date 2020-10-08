@@ -1,0 +1,127 @@
+//
+//  HabitCellTableViewCell.swift
+//  HabitTracker
+//
+//  Created by Oliwia Michalak on 06/10/2020.
+//
+
+import UIKit
+
+class HabitCellTableViewCell: UITableViewCell {
+    
+    // MARK Public variable
+    static let reuseID = "HabitCell"
+    
+    // MARK: UI Components
+    let backgroundColorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .tertiarySystemFill
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let horizontalStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .leading
+        stack.distribution = .fillProportionally
+        stack.spacing = 5
+        stack.axis = .horizontal
+        return stack
+    }()
+    
+    let verticalStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.alignment = .leading
+        stack.distribution = .fillProportionally
+        stack.spacing = 5
+        stack.axis = .vertical
+        return stack
+    }()
+    
+    let habitLabel: UILabel = {
+        let label = UILabel()
+//        label.text = "Study"
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Roboto", size: 20)
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    let timeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "This week"
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Roboto", size: 15)
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    let doneNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1 / 3"
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = UIFont(name: "Roboto", size: 15)
+        label.textColor = .systemGray
+        return label
+    }()
+    
+    
+    // MARK: Lifecycle
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Public function
+    func setCell(habit: Habit) {
+        habitLabel.text = habit.name
+    }
+    
+    override func layoutSubviews() {
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+    }
+    
+    // MARK: Private functions
+    private func setupCell() {
+        accessoryType = .checkmark
+        self.layer.cornerRadius = 10
+        
+        addSubview(backgroundColorView)
+        backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundColorView.addConstraints(
+            [
+                backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor),
+                backgroundColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                backgroundColorView.leftAnchor.constraint(equalTo: self.leftAnchor),
+                backgroundColorView.rightAnchor.constraint(equalTo: self.rightAnchor)
+            ]
+        )
+        
+        addSubview(verticalStackView)
+        addSubview(horizontalStackView)
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        verticalStackView.addConstraints(
+            [
+                verticalStackView.topAnchor.constraint(equalTo: self.topAnchor),
+                verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                verticalStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
+            ]
+        )
+        
+        verticalStackView.addArrangedSubview(habitLabel)
+        verticalStackView.addArrangedSubview(horizontalStackView)
+        
+        horizontalStackView.addArrangedSubview(timeLabel)
+        horizontalStackView.addArrangedSubview(doneNumberLabel)
+    }
+}
