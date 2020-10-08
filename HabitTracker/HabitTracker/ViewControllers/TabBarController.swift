@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
     func createMainNC() -> UINavigationController {
         let mainVC = MainViewController()
         mainVC.title = "Your habits"
-        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        mainVC.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
         
         return UINavigationController(rootViewController: mainVC)
     }

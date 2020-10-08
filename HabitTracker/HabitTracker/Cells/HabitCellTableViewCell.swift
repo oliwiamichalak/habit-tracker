@@ -15,7 +15,6 @@ class HabitCellTableViewCell: UITableViewCell {
     // MARK: UI Components
     let backgroundColorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .tertiarySystemFill
         view.layer.cornerRadius = 10
         return view
     }()
@@ -41,11 +40,10 @@ class HabitCellTableViewCell: UITableViewCell {
     
     let habitLabel: UILabel = {
         let label = UILabel()
-        //        label.text = "Study"
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto", size: 20)
-        label.textColor = .systemGray
+        label.textColor = .darkGray
         return label
     }()
     
@@ -55,7 +53,7 @@ class HabitCellTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto", size: 15)
-        label.textColor = .systemGray
+        label.textColor = .darkGray
         return label
     }()
     
@@ -65,7 +63,7 @@ class HabitCellTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto", size: 15)
-        label.textColor = .systemGray
+        label.textColor = .darkGray
         return label
     }()
     
@@ -73,6 +71,7 @@ class HabitCellTableViewCell: UITableViewCell {
     // MARK: Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.layoutSubviews()
         setupCell()
     }
     
@@ -83,10 +82,6 @@ class HabitCellTableViewCell: UITableViewCell {
     // MARK: Public function
     func setCell(habit: Habit) {
         habitLabel.text = habit.name
-    }
-    
-    override func layoutSubviews() {
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     // MARK: Private functions

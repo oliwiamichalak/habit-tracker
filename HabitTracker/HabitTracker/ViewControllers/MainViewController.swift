@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: Public properites
-    var habits: [Habit] = [Habit(name: "Study", minimum: 3, howManyDone: 2)]
+    var habits: [Habit] = [Habit(name: "Study", minimum: 3, howManyDone: 2), Habit(name: "Workout", minimum: 4, howManyDone: 2), Habit(name: "Drink more water", minimum: 3, howManyDone: 1)]
     
     // MARK: UI Components
     let titleLabel: UILabel = {
@@ -18,14 +18,17 @@ class MainViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont(name: "Roboto", size: 25)
         label.numberOfLines = 0
-        label.text = "You can do it!"
-        label.textColor = .systemPurple
+        label.text = "Track your progress"
+        label.textColor = .systemGreen
         return label
     }()
     
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.cornerRadius = 10
+        tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: -100, right: 10)
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = .green
         return tableView
     }()
 
