@@ -22,6 +22,7 @@ class HabitCellTableViewCell: UITableViewCell {
     
     let horizontalStackView: UIStackView = {
         let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.alignment = .leading
         stack.distribution = .fillProportionally
         stack.spacing = 5
@@ -40,7 +41,7 @@ class HabitCellTableViewCell: UITableViewCell {
     
     let habitLabel: UILabel = {
         let label = UILabel()
-//        label.text = "Study"
+        //        label.text = "Study"
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto", size: 20)
@@ -90,38 +91,30 @@ class HabitCellTableViewCell: UITableViewCell {
     
     // MARK: Private functions
     private func setupCell() {
+        backgroundColor = .systemFill
         accessoryType = .checkmark
         self.layer.cornerRadius = 10
         
         addSubview(backgroundColorView)
         backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundColorView.addSubview(verticalStackView)
         
-        backgroundColorView.addConstraints(
+        verticalStackView.addSubview(habitLabel)
+        verticalStackView.addSubview(horizontalStackView)
+        
+        horizontalStackView.addSubview(timeLabel)
+        horizontalStackView.addSubview(doneNumberLabel)
+        
+        NSLayoutConstraint.activate(
             [
-                backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor),
-                backgroundColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                backgroundColorView.leftAnchor.constraint(equalTo: self.leftAnchor),
-                backgroundColorView.rightAnchor.constraint(equalTo: self.rightAnchor)
+                backgroundColorView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                backgroundColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+                backgroundColorView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+                backgroundColorView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                verticalStackView.bottomAnchor.constraint(equalTo: backgroundColorView.bottomAnchor),
+                verticalStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8)
             ]
         )
-        
-        addSubview(verticalStackView)
-        addSubview(horizontalStackView)
-        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        verticalStackView.addConstraints(
-            [
-                verticalStackView.topAnchor.constraint(equalTo: self.topAnchor),
-                verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                verticalStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
-            ]
-        )
-        
-        verticalStackView.addArrangedSubview(habitLabel)
-        verticalStackView.addArrangedSubview(horizontalStackView)
-        
-        horizontalStackView.addArrangedSubview(timeLabel)
-        horizontalStackView.addArrangedSubview(doneNumberLabel)
     }
 }
