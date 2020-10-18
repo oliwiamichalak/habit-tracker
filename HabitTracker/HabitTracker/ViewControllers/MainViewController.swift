@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: Public properites
-    var habits: [Habit] = [Habit(name: "Study", minimum: 3, howManyDone: 2), Habit(name: "Workout", minimum: 4, howManyDone: 2), Habit(name: "Drink more water", minimum: 3, howManyDone: 1)]
+    var habits: [Habit] = []
     
     // MARK: UI Components
     let titleLabel: UILabel = {
