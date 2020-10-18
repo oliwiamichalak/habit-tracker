@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F49B88C1252CF16700729792 /* HabitCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B88C0252CF16700729792 /* HabitCellTableViewCell.swift */; };
+		F4E800C5252E54F600F6FE63 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E800C4252E54F600F6FE63 /* Habit.swift */; };
 		F4FFD368252CE0F9005EE4AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */; };
 		F4FFD36A252CE0F9005EE4AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */; };
 		F4FFD371252CE101005EE4AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FFD370252CE101005EE4AE /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F49B88C0252CF16700729792 /* HabitCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCellTableViewCell.swift; sourceTree = "<group>"; };
+		F4E800C4252E54F600F6FE63 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		F4FFD364252CE0F9005EE4AE /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F49B88C5252CF16B00729792 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F49B88C0252CF16700729792 /* HabitCellTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F4E800C3252E54E700F6FE63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4E800C4252E54F600F6FE63 /* Habit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F4FFD35B252CE0F9005EE4AE = {
 			isa = PBXGroup;
 			children = (
@@ -101,12 +121,14 @@
 		F4FFD366252CE0F9005EE4AE /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
-				F4FFD3AD252CE7EB005EE4AE /* ViewControllers */,
 				F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */,
-				F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */,
 				F4FFD370252CE101005EE4AE /* Assets.xcassets */,
-				F4FFD372252CE101005EE4AE /* LaunchScreen.storyboard */,
+				F49B88C5252CF16B00729792 /* Cells */,
 				F4FFD375252CE101005EE4AE /* Info.plist */,
+				F4FFD372252CE101005EE4AE /* LaunchScreen.storyboard */,
+				F4E800C3252E54E700F6FE63 /* Models */,
+				F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */,
+				F4FFD3AD252CE7EB005EE4AE /* ViewControllers */,
 			);
 			path = HabitTracker;
 			sourceTree = "<group>";
@@ -268,8 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49B88C1252CF16700729792 /* HabitCellTableViewCell.swift in Sources */,
 				F4FFD39F252CE32F005EE4AE /* TabBarController.swift in Sources */,
 				F4FFD368252CE0F9005EE4AE /* AppDelegate.swift in Sources */,
+				F4E800C5252E54F600F6FE63 /* Habit.swift in Sources */,
 				F4FFD36A252CE0F9005EE4AE /* SceneDelegate.swift in Sources */,
 				F4FFD3A4252CE3DD005EE4AE /* MainViewController.swift in Sources */,
 				F4FFD3A9252CE412005EE4AE /* NewAimViewController.swift in Sources */,
