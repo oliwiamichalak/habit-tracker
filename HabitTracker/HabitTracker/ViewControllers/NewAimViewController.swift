@@ -9,6 +9,9 @@ import UIKit
 
 class NewAimViewController: UIViewController {
     // MARK: Private properites
+    let mainVC = MainViewController()
+    
+    // MARK: UI Components
     private let newAimLabel: UILabel = {
         let label = UILabel()
         label.text = "Your new goal"
@@ -129,5 +132,6 @@ class NewAimViewController: UIViewController {
 
     @objc func saveNewGoal() {
 
+        mainVC.tableView.reloadData()
     }
 }
