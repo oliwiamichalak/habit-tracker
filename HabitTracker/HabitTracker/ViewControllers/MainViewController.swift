@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: Public properites
-    var habits: [Habit] = []
+    var habits: [Habit] = [Habit(name: "Reading", minimum: 4, howManyDone: 40)]
     let newAimVC = NewAimViewController()
     
     // MARK: UI Components
@@ -97,6 +97,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! HabitCellTableViewCell
         let habit = habits[indexPath.row]
+        cell.habitLabel.text = habit.name
         cell.setCell(habit: habit)
         return cell
     }
@@ -121,6 +122,6 @@ extension MainViewController: NewAimViewControllerDelegate {
     func addNewHabit(newHabit: Habit) {
         habits.append(newHabit)
         insertNewHabitIntoTable()
-//        print(habits.count)
+        print(habits.count)
     }
 }

@@ -142,7 +142,11 @@ class NewAimViewController: UIViewController {
             let howLong = Int(long) ?? 0
             let howOnWeek = Int(onWeek) ?? 0
             let newHabit = Habit(name: aimName, minimum: howLong, howManyDone: howOnWeek)
-            nawAimDelegate?.addNewHabit(newHabit: newHabit)
+            print(newHabit.name, newHabit.howManyDone, newHabit.minimum)
+            DispatchQueue.main.async { [weak self] in
+                self?.nawAimDelegate?.addNewHabit(newHabit: newHabit)
+                self?.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
 }
