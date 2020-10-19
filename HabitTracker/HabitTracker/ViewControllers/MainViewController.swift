@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
     
     // MARK: Public properites
     var habits: [Habit] = []
+    let newAimVC = NewAimViewController()
     
     // MARK: UI Components
     let titleLabel: UILabel = {
@@ -35,6 +36,9 @@ class MainViewController: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newAimVC.nawAimDelegate = self
+        
         setupUI()
         setupTableView()
     }
@@ -75,7 +79,14 @@ class MainViewController: UIViewController {
         tableView.rowHeight = 80
         tableView.register(HabitCellTableViewCell.self, forCellReuseIdentifier: "HabitCell")
     }
-
+    
+    private func insertNewHabitIntoTable() {
+        let indexPath = IndexPath(row: habits.count - 1, section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath]  , with: .fade)
+        tableView.endUpdates()
+//        tableView.reloadData()
+    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
@@ -88,5 +99,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let habit = habits[indexPath.row]
         cell.setCell(habit: habit)
         return cell
+    }
+}
+
+extension MainViewController: NewAimViewControllerDelegate {
+    func addNewHabit(newHabit: Habit) {
+        habits.append(newHabit)
+        insertNewHabitIntoTable()
+//        print(habits.count)
     }
 }
