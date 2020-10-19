@@ -100,6 +100,21 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setCell(habit: habit)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            habits.remove(at: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 }
 
 extension MainViewController: NewAimViewControllerDelegate {
