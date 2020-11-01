@@ -16,6 +16,9 @@ class NewAimViewController: UIViewController {
     // MARK: Public variables
     weak var nawAimDelegate: NewAimViewControllerDelegate?
     
+    // MARK: Private variables
+    private let valdation: ValidationService
+    
     // MARK: UI Components
     private let newAimLabel: UILabel = {
         let label = UILabel()
@@ -141,6 +144,9 @@ class NewAimViewController: UIViewController {
         if let aimName = newAimTextField.text, let long = howManyTimesTextField.text, let onWeek = howManyTimesInAWeekTextField.text {
             let howLong = Int(long) ?? 0
             let howOnWeek = Int(onWeek) ?? 0
+            
+            
+            
             let newHabit = Habit(name: aimName, minimum: howLong, howManyDone: howOnWeek)
             print(newHabit.name, newHabit.howManyDone, newHabit.minimum)
             if let delegate = nawAimDelegate {
