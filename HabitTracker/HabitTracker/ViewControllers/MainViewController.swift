@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     // MARK: Public properites
     var habits: [Habit] = [Habit(name: "Reading", minimum: 4, howManyDone: 40)]
     let newAimVC = NewAimViewController()
+    var nawAimDelegate: NewAimViewControllerDelegate!
     
     // MARK: UI Components
     let titleLabel: UILabel = {
@@ -37,7 +38,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newAimVC.nawAimDelegate = self
+        self.nawAimDelegate = self
         
         setupUI()
         setupTableView()
