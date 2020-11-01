@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol NewAimViewControllerDelegate {
+protocol NewAimViewControllerDelegate: class {
     func addNewHabit(newHabit: Habit)
 }
 
 class NewAimViewController: UIViewController {
     
     // MARK: Public variables
-    var nawAimDelegate: NewAimViewControllerDelegate?
+    weak var nawAimDelegate: NewAimViewControllerDelegate?
     
     // MARK: UI Components
     private let newAimLabel: UILabel = {
@@ -142,7 +142,10 @@ class NewAimViewController: UIViewController {
             let howLong = Int(long) ?? 0
             let howOnWeek = Int(onWeek) ?? 0
             let newHabit = Habit(name: aimName, minimum: howLong, howManyDone: howOnWeek)
-            nawAimDelegate?.addNewHabit(newHabit: newHabit)
+            print(newHabit.name, newHabit.howManyDone, newHabit.minimum)
+            if let delegate = nawAimDelegate {
+                delegate.addNewHabit(newHabit: newHabit)
+            }
         }
     }
 }

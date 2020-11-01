@@ -13,56 +13,32 @@ class HabitCellTableViewCell: UITableViewCell {
     static let reuseID = "HabitCell"
     
     // MARK: UI Components
-    let backgroundColorView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10
-        return view
-    }()
-    
-    let horizontalStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.alignment = .leading
-        stack.distribution = .fillProportionally
-        stack.spacing = 5
-        stack.axis = .horizontal
-        return stack
-    }()
-    
-    let verticalStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.alignment = .leading
-        stack.distribution = .fillProportionally
-        stack.spacing = 5
-        stack.axis = .vertical
-        return stack
-    }()
-    
     let habitLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont(name: "Roboto", size: 20)
-        label.textColor = .darkGray
+        label.textColor = .systemGreen
         return label
     }()
     
     let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "This week"
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont(name: "Roboto", size: 15)
+        label.font = UIFont(name: "Roboto", size: 11)
         label.textColor = .darkGray
         return label
     }()
     
     let doneNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 / 3"
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont(name: "Roboto", size: 15)
+        label.font = UIFont(name: "Roboto", size: 11)
         label.textColor = .darkGray
         return label
     }()
@@ -82,6 +58,8 @@ class HabitCellTableViewCell: UITableViewCell {
     // MARK: Public function
     func setCell(habit: Habit) {
         habitLabel.text = habit.name
+        timeLabel.text = "How many times in a week \(String(habit.minimum))"
+        doneNumberLabel.text = "Ho many left \(String(habit.howManyDone))"
     }
     
     // MARK: Private functions
@@ -90,25 +68,26 @@ class HabitCellTableViewCell: UITableViewCell {
         accessoryType = .checkmark
         self.layer.cornerRadius = 10
         
-        addSubview(backgroundColorView)
-        backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundColorView.addSubview(verticalStackView)
-        
-        verticalStackView.addSubview(habitLabel)
-        verticalStackView.addSubview(horizontalStackView)
-        
-        horizontalStackView.addSubview(timeLabel)
-        horizontalStackView.addSubview(doneNumberLabel)
+        addSubview(habitLabel)
+        addSubview(timeLabel)
+        addSubview(doneNumberLabel)
         
         NSLayoutConstraint.activate(
             [
-                backgroundColorView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                backgroundColorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-                backgroundColorView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                backgroundColorView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                verticalStackView.bottomAnchor.constraint(equalTo: backgroundColorView.bottomAnchor),
-                verticalStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8)
+                habitLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+                habitLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
+                habitLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+                habitLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+                
+                timeLabel.topAnchor.constraint(equalTo: habitLabel.bottomAnchor, constant: 5),
+                timeLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
+                timeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+                timeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+                
+                doneNumberLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 5),
+                doneNumberLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
+                doneNumberLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.8),
+                doneNumberLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
             ]
         )
     }
