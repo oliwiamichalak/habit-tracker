@@ -9,25 +9,33 @@ import XCTest
 @testable import HabitTracker
 
 class HabitTrackerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var validation: ValidationService!
+    
+    override func setUp() {
+        super.setUp()
+        validation = ValidationService()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        validation = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func test_is_aim_name_is_valid() throws {
+       XCTAssertNoThrow(try validation.validateAimName("Drawing"))
+        XCTAssertNoThrow(try validation.validateAimName("Dance"))
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_aim_name_is_nil() throws {
+        XCTAssertThrowsError(try validation.validateAimName(nil))
     }
-
+    
+    func test_aim_is_too_long() throws {
+        XCTAssertThrowsError(try validation.validateAimName("SuperLong name of new goal, such as description of activity"))
+    }
+    
+    func test_aim_is_too_short() throws {
+        XCTAssertThrowsError(try validation.validateAimName("No"))
+    }
 }

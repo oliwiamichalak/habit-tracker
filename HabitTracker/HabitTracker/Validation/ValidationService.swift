@@ -43,9 +43,9 @@ struct ValidationService {
     func validateAimName(_ aim: String?) throws -> String {
         guard let aim = aim else { throw
             ValidationError.invalidAimName }
-        guard aim.count <= 3 else { throw
+        guard aim.count >= 3 else { throw
             ValidationError.aimNameTooShort }
-        guard aim.count >= 21 else { throw
+        guard aim.count <= 12 else { throw
             ValidationError.aimNameTooLong }
         return aim
     }
