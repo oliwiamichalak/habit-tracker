@@ -38,4 +38,29 @@ class HabitTrackerTests: XCTestCase {
     func test_aim_is_too_short() throws {
         XCTAssertThrowsError(try validation.validateAimName("No"))
     }
+    
+    func test_duration_is_notValid() throws {
+        let expectedError = ValidationError.invalidDuration
+        var error: ValidationError?
+        let duration = -4
+        
+        XCTAssertThrowsError(try validation.validateDuration(duration)) {
+            thrownError in
+            error = thrownError as? ValidationError
+        }
+        
+        XCTAssertEqual(expectedError, error)
+    }
+    
+    func test_done_is_notValid() throws {
+        let expectedError = ValidationError.emptyDone
+        var error: ValidationError?
+        
+        XCTAssertThrowsError(try validation.validateDone(nil)) { thrownError in
+            error = thrownError as? ValidationError
+        }
+        
+        XCTAssertEqual(expectedError, error)
+    }
+    
 }

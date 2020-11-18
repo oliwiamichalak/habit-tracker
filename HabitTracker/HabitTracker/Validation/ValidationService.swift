@@ -52,17 +52,17 @@ struct ValidationService {
     
     func validateDuration(_ duration: Int?) throws -> Int {
         guard let duration = duration else { throw
-            ValidationError.invalidDuration }
-        guard duration <= 0 else { throw
             ValidationError.emptyDuration }
+        guard duration >= 0 else { throw
+            ValidationError.invalidDuration }
         return duration
     }
     
     func validateDone(_ done: Int?) throws -> Int {
         guard let done = done else { throw
-            ValidationError.invalidDone }
-        guard done <= 0 else { throw
             ValidationError.emptyDone }
+        guard done >= 0 else { throw
+            ValidationError.invalidDone }
         return done
     }
 }
