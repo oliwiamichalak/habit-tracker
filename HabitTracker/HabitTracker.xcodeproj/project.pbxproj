@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F49B88C1252CF16700729792 /* HabitCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B88C0252CF16700729792 /* HabitCellTableViewCell.swift */; };
 		F4E800C5252E54F600F6FE63 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E800C4252E54F600F6FE63 /* Habit.swift */; };
+		F4F937C5254EEE4300ECEFCB /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F937C4254EEE4300ECEFCB /* ValidationService.swift */; };
 		F4FFD368252CE0F9005EE4AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */; };
 		F4FFD36A252CE0F9005EE4AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */; };
 		F4FFD371252CE101005EE4AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FFD370252CE101005EE4AE /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		F49B88C0252CF16700729792 /* HabitCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCellTableViewCell.swift; sourceTree = "<group>"; };
 		F4E800C4252E54F600F6FE63 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		F4F937C4254EEE4300ECEFCB /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		F4FFD364252CE0F9005EE4AE /* HabitTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FFD369252CE0F9005EE4AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		F4F937C3254EEE2F00ECEFCB /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				F4F937C4254EEE4300ECEFCB /* ValidationService.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		F4FFD35B252CE0F9005EE4AE = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		F4FFD366252CE0F9005EE4AE /* HabitTracker */ = {
 			isa = PBXGroup;
 			children = (
+				F4F937C3254EEE2F00ECEFCB /* Validation */,
 				F4FFD367252CE0F9005EE4AE /* AppDelegate.swift */,
 				F4FFD370252CE101005EE4AE /* Assets.xcassets */,
 				F49B88C5252CF16B00729792 /* Cells */,
@@ -296,6 +307,7 @@
 				F4E800C5252E54F600F6FE63 /* Habit.swift in Sources */,
 				F4FFD36A252CE0F9005EE4AE /* SceneDelegate.swift in Sources */,
 				F4FFD3A4252CE3DD005EE4AE /* MainViewController.swift in Sources */,
+				F4F937C5254EEE4300ECEFCB /* ValidationService.swift in Sources */,
 				F4FFD3A9252CE412005EE4AE /* NewAimViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

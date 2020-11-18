@@ -25,7 +25,8 @@ class TabBarController: UITabBarController {
     }
     
     func createNewAimNC() -> UINavigationController {
-        let newAimVC = NewAimViewController()
+        let valdation = ValidationService()
+        let newAimVC = NewAimViewController(validation: valdation)
         newAimVC.title = "Create new goal"
         newAimVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         

@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     // MARK: Public properites
     var habits: [Habit] = [Habit(name: "Reading", minimum: 4, howManyDone: 40)]
-    let newAimVC = NewAimViewController()
+    let newAimVC = NewAimViewController(validation: ValidationService())
     var nawAimDelegate: NewAimViewControllerDelegate!
     
     // MARK: UI Components

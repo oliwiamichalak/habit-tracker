@@ -16,6 +16,9 @@ class NewAimViewController: UIViewController {
     // MARK: Public variables
     weak var nawAimDelegate: NewAimViewControllerDelegate?
     
+    // MARK: Private variables
+    private let valdation: ValidationService?
+    
     // MARK: UI Components
     private let newAimLabel: UILabel = {
         let label = UILabel()
@@ -80,9 +83,17 @@ class NewAimViewController: UIViewController {
     
     // MARK: Lifecycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setupUI()
+    }
+    
+    init(validation: ValidationService) {
+        self.valdation = validation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: Private functions
@@ -138,14 +149,15 @@ class NewAimViewController: UIViewController {
     }
     
     @objc func saveNewGoal(_ : UIButton) {
-        if let aimName = newAimTextField.text, let long = howManyTimesTextField.text, let onWeek = howManyTimesInAWeekTextField.text {
-            let howLong = Int(long) ?? 0
-            let howOnWeek = Int(onWeek) ?? 0
-            let newHabit = Habit(name: aimName, minimum: howLong, howManyDone: howOnWeek)
-            print(newHabit.name, newHabit.howManyDone, newHabit.minimum)
-            if let delegate = nawAimDelegate {
-                delegate.addNewHabit(newHabit: newHabit)
-            }
+        do {
+            let aimName = try valdation?.validateAimName(newAimTextField.text)
+            let howLong = try valdation?.validateDuration(Int(howManyTimesTextField.text!))
+            let onWeek = try valdation?.validateDone(Int(howManyTimesInAWeekTextField.text!))
+            
+            let newHabit = Habit(name: aimName ?? "", minimum: howLong ?? 0, howManyDone: onWeek ?? 0)
+            nawAimDelegate?.addNewHabit(newHabit: newHabit)
+        } catch {
+            print(error)
         }
     }
 }
